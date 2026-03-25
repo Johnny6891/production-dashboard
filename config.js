@@ -31,14 +31,24 @@ const CONFIG = {
     { title: '2F-訂單排程系統', url: 'https://script.google.com/macros/s/AKfycbztGiR_IdZn5oYjhbaZ0FT5L1aXek7rOSCRcN-LzhFruhgxbq7li_OZaU_tt-m7RIZ4UA/exec', icon: '🏗️', className: 'btn-dusty' },
     { title: '同事需求管理系統', url: 'https://colleague-request-system.vercel.app/', icon: '👥', className: 'btn-slate' },
     {
+      title: '週工時統計系統',
+      icon: '⏱️',
+      className: 'btn-graphite',
+      children: [
+        { title: 'README', url: 'https://www.notion.so/32eee389af1a80fda286cbd0c0ed0b51', icon: '📘', className: 'btn-warm' },
+        { title: '連結', url: 'https://script.google.com/macros/s/AKfycbxXBygTXFMSQkK44E3qgAe8S8Jh0cbNYaU60YfhG5xryOpdgDLndyan854duOygJ68fRA/exec', icon: '🔗', className: 'btn-slate' }
+      ]
+    },
+    {
       title: '2F 生產排程甘特圖',
       icon: '📈',
       className: 'btn-graphite',
       children: [
         { title: 'README', url: 'https://www.notion.so/2F-grmini-32eee389af1a80dd9a9efb433cf131af', icon: '📘', className: 'btn-warm' },
-        { title: '連結', url: 'https://script.google.com/a/macros/dgstand.com/s/AKfycbzaL3XAhD9wGKqJO_rFfS7_zTfHzmzdQ_fTlfCSK_s/dev?pli=1&authuser=0', icon: '🔗', className: 'btn-slate' }
+        { title: '連結', url: 'https://script.google.com/macros/s/AKfycbzEbqKpehL8gEquD5vLmlEnsJN2CjHWb1fBHEiLFCtk4Xf1jc4LHUy5kteSfaWS_0WZ/exec', icon: '🔗', className: 'btn-slate' }
       ]
-    }
+    },
+    { title: '報工異動記錄系統', url: 'https://script.google.com/a/macros/dgstand.com/s/AKfycbz6IvXeaJBN9pgnGRIc1YROQ4tx59SerC0lgHGH8F3UcBjXP9rgP4O1vJGholO3WYYB/exec', icon: '📝', className: 'btn-dusty' }
   ],
 
   FIELD_ICONS: {
