@@ -1,0 +1,96 @@
+﻿{
+    "L0":  "feat: 新增常用系統二層彈窗與一鍵啟動腳本，整體已完成且目前進行中為你端最終點擊驗證",
+    "compact_version":  "2.0",
+    "timestamp":  "2026-03-25T14:36:37.3973985+08:00",
+    "project":  {
+                    "name":  "生管系統儀表板-v2",
+                    "path":  "C:/Users/user/My Second Brain/生管系統儀表板-v2",
+                    "tech_stack":  [
+                                       "JavaScript",
+                                       "React + Vite",
+                                       "Node.js + Express + Zeabur/GHCR"
+                                   ],
+                    "description":  "提供生管人員查看儀表板、待辦事項與常用系統入口的內部工具"
+                },
+    "session_goal":  "在常用系統彈窗新增「2F 生產排程甘特圖」並提供 README/連結二層按鈕，同時讓本機驗證流程可穩定執行",
+    "completed":  [
+                      {
+                          "task":  "讀取並確認上層與專案內的 AGENTS/CLAUDE/env 與部署摘要",
+                          "files":  [
+                                        "C:/Users/user/My Second Brain/AGENTS.md",
+                                        "C:/Users/user/My Second Brain/CLAUDE.md",
+                                        "C:/Users/user/My Second Brain/env.local",
+                                        "C:/Users/user/My Second Brain/生管系統儀表板-v2/生管系統儀表板-v2-部署摘要.md",
+                                        "C:/Users/user/My Second Brain/生管系統儀表板-v2/CLAUDE.md"
+                                    ],
+                          "detail":  "已確認語言與 Zeabur 操作限制，並掌握現行部署與前端彈窗架構。"
+                      },
+                      {
+                          "task":  "實作常用系統二層彈窗與新連結資料",
+                          "files":  [
+                                        "config.js",
+                                        "client/src/components/Navbar.jsx",
+                                        "client/src/index.css"
+                                    ],
+                          "detail":  "新增「2F 生產排程甘特圖」主入口與子層 README/連結按鈕，並補上返回鍵與子彈窗樣式。"
+                      },
+                      {
+                          "task":  "完成本機問題定位與一鍵啟動工具",
+                          "files":  [
+                                        "dev-one-click.ps1"
+                                    ],
+                          "detail":  "確認缺項主因是 port 3000 被舊 node 佔用後端未重啟，並提供一鍵清 port+啟前後端+API檢查腳本。"
+                      }
+                  ],
+    "in_progress":  [
+                        {
+                            "task":  "最終 UI 驗證",
+                            "status":  "後端已成功重啟到 localhost:3000，待使用者在瀏覽器強制重整後確認新選項與二層彈窗。",
+                            "next_step":  "執行 Ctrl+F5 並點擊常用系統 -\u003e 2F 生產排程甘特圖，確認 README/連結兩按鈕可開啟。",
+                            "blockers":  null
+                        }
+                    ],
+    "failed_approaches":  [
+                              {
+                                  "attempt":  "僅重啟前端 Vite 來驗證新選項",
+                                  "why_failed":  "links 資料由 localhost:3000 後端 API 提供，後端未重啟時仍回傳舊 config。",
+                                  "lesson":  "凡是 config 走 /api/dashboard/config 的改動都要先確認後端程序與埠狀態。"
+                              },
+                              {
+                                  "attempt":  "直接執行 npm run dev:server",
+                                  "why_failed":  "port 3000 被舊 node 佔用導致 EADDRINUSE，新進程未真正啟動。",
+                                  "lesson":  "先查並釋放埠再啟服務，避免以為已重啟但其實仍是舊進程。"
+                              }
+                          ],
+    "key_decisions":  [
+                          {
+                              "decision":  "以 config 資料結構加 children 方式實作二層彈窗",
+                              "reason":  "可維持既有 links 資料驅動模式並減少硬編碼分支。",
+                              "alternatives_rejected":  [
+                                                            "在 Navbar.jsx 直接寫死 2F 甘特圖子按鈕",
+                                                            "另外建立獨立 LinksGrid 組件承載二層邏輯"
+                                                        ]
+                          },
+                          {
+                              "decision":  "新增 dev-one-click.ps1 作為標準本機啟動入口",
+                              "reason":  "可一次處理清埠、啟動前後端與 API 檢查，降低重複操作失誤。",
+                              "alternatives_rejected":  [
+                                                            "每次手動查 PID 並逐視窗重啟",
+                                                            "只提供文字步驟不提供腳本"
+                                                        ]
+                          }
+                      ],
+    "user_preferences":  [
+                             "預設使用繁體中文回覆",
+                             "先讀取指定路徑下的 AGENTS.md、CLAUDE.md、env.local 與部署摘要",
+                             "在常用系統彈窗新增「2F 生產排程甘特圖」且二層按鈕為 README 與連結",
+                             "希望提供一鍵 PowerShell 指令減少手動操作"
+                         ],
+    "key_files":  {
+                      "config.js":  "後端提供前端 links 設定來源，新增二層 children 入口與 URL。",
+                      "client/src/components/Navbar.jsx":  "常用系統彈窗主體，負責一層/二層彈窗顯示與互動切換。",
+                      "client/src/index.css":  "彈窗與連結按鈕視覺樣式，包含子彈窗層級與返回按鈕樣式。",
+                      "dev-one-click.ps1":  "本機一鍵清理埠並啟前後端，附帶 API 新選項檢查。"
+                  },
+    "handover_context":  "本次核心功能已完成並通過 build，缺項根因已定位為後端舊進程佔用 3000 導致讀到舊 config。使用者已成功重啟新後端，下一步只要在瀏覽器強制重整並點擊常用系統確認二層彈窗。若仍未顯示，先用 /api/dashboard/config 檢查是否含「2F 生產排程甘特圖」，再視需要重啟前端。"
+}

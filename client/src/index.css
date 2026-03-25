@@ -119,12 +119,21 @@ body {
   box-shadow: 0 8px 40px rgba(0,0,0,0.2);
   padding: 25px; width: 90%; max-width: 460px;
 }
+.submodal-overlay { z-index: 210; background: rgba(0,0,0,0.28); }
+.submodal-box { max-width: 420px; }
 .modal-header {
   font-size: 1.2rem; font-weight: 700; color: #5c4044;
   display: flex; justify-content: space-between; align-items: center;
   border-bottom: 2px solid rgba(255,255,255,0.3);
   padding-bottom: 10px; margin-bottom: 20px;
 }
+.modal-back {
+  background: rgba(255,255,255,0.55); border: 1px solid rgba(0,0,0,0.08);
+  font-size: 0.95rem; color: #5c4044; cursor: pointer;
+  padding: 5px 10px; border-radius: 8px; font-family: inherit;
+  transition: background 0.2s;
+}
+.modal-back:hover { background: rgba(255,255,255,0.9); }
 .modal-close {
   background: none; border: none; font-size: 1.1rem; color: #5c4044;
   cursor: pointer; padding: 4px 8px; border-radius: 6px;
@@ -139,6 +148,8 @@ body {
   display: flex; align-items: center; gap: 15px;
   padding: 18px 20px; border-radius: 15px;
   border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(5px);
+  background: rgba(255,255,255,0.3); cursor: pointer;
+  font-family: inherit; font-size: 1rem; text-align: left; color: inherit;
   transition: all 0.3s ease;
 }
 .link-btn:hover { transform: translateY(-3px); background: rgba(255,255,255,0.6); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
@@ -146,6 +157,7 @@ body {
 .btn-sage { background: rgba(178,187,174,0.4); }
 .btn-dusty { background: rgba(190,174,176,0.4); }
 .btn-slate { background: rgba(174,183,190,0.4); }
+.btn-graphite { background: rgba(160,168,175,0.45); }
 .link-icon { font-size: 1.8rem; }
 .link-text { font-size: 1.1rem; font-weight: 700; color: #4a4a4a; }
 

@@ -29,7 +29,16 @@ const CONFIG = {
     { title: '生管常用頁面', url: 'https://gamma.app/docs/-vutkue9x5spnt6e?mode=doc', icon: '📊', className: 'btn-warm' },
     { title: '1F-訂單排程系統', url: 'https://script.google.com/macros/s/AKfycbxl8eblvm3_6eHSqZh9PgmGiEGQ_pi-afT29kkxfVERXnROYbcts1C5NKNSlix1diUB/exec', icon: '🏭', className: 'btn-sage' },
     { title: '2F-訂單排程系統', url: 'https://script.google.com/macros/s/AKfycbztGiR_IdZn5oYjhbaZ0FT5L1aXek7rOSCRcN-LzhFruhgxbq7li_OZaU_tt-m7RIZ4UA/exec', icon: '🏗️', className: 'btn-dusty' },
-    { title: '同事需求管理系統', url: 'https://colleague-request-system.vercel.app/', icon: '👥', className: 'btn-slate' }
+    { title: '同事需求管理系統', url: 'https://colleague-request-system.vercel.app/', icon: '👥', className: 'btn-slate' },
+    {
+      title: '2F 生產排程甘特圖',
+      icon: '📈',
+      className: 'btn-graphite',
+      children: [
+        { title: 'README', url: 'https://www.notion.so/2F-grmini-32eee389af1a80dd9a9efb433cf131af', icon: '📘', className: 'btn-warm' },
+        { title: '連結', url: 'https://script.google.com/a/macros/dgstand.com/s/AKfycbzaL3XAhD9wGKqJO_rFfS7_zTfHzmzdQ_fTlfCSK_s/dev?pli=1&authuser=0', icon: '🔗', className: 'btn-slate' }
+      ]
+    }
   ],
 
   FIELD_ICONS: {

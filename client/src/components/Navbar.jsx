@@ -19,6 +19,7 @@ function getDateStr() {
 export default function Navbar({ todos, links }) {
   const [dateStr, setDateStr] = useState(getDateStr());
   const [open, setOpen] = useState(false);
+  const [submenu, setSubmenu] = useState(null);
 
   useEffect(() => {
     const t = setInterval(() => setDateStr(getDateStr()), 60000);
@@ -26,6 +27,10 @@ export default function Navbar({ todos, links }) {
   }, []);
 
   const activeTodos = todos.filter(t => !t.done).slice(0, 3);
+  const closeAllModals = () => {
+    setOpen(false);
+    setSubmenu(null);
+  };
 
   return (
     <>
@@ -46,18 +51,55 @@ export default function Navbar({ todos, links }) {
       </nav>
 
       {open && (
-        <div className="modal-overlay" onClick={() => setOpen(false)}>
+        <div className="modal-overlay" onClick={closeAllModals}>
           <div className="modal-box" onClick={e => e.stopPropagation()}>
             <div className="modal-header">
               <span>🔗 常用系統導航</span>
-              <button className="modal-close" onClick={() => setOpen(false)}>✕</button>
+              <button className="modal-close" onClick={closeAllModals}>✕</button>
             </div>
             <div className="links-list">
-              {(links ?? []).map((link, i) => (
-                <a key={i} href={link.url} target="_blank" rel="noreferrer"
-                  className={`link-btn ${link.className}`}>
-                  <div className="link-icon">{link.icon}</div>
-                  <div className="link-text">{link.title}</div>
+              {(links ?? []).map((link, i) => {
+                if (Array.isArray(link.children) && link.children.length > 0) {
+                  return (
+                    <button
+                      key={i}
+                      type="button"
+                      className={`link-btn ${link.className ?? ''}`}
+                      onClick={() => setSubmenu(link)}
+                    >
+                      <div className="link-icon">{link.icon}</div>
+                      <div className="link-text">{link.title}</div>
+                    </button>
+                  );
+                }
+
+                return (
+                  <a key={i} href={link.url} target="_blank" rel="noreferrer"
+                    className={`link-btn ${link.className}`}>
+                    <div className="link-icon">{link.icon}</div>
+                    <div className="link-text">{link.title}</div>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {open && submenu && (
+        <div className="modal-overlay submodal-overlay" onClick={() => setSubmenu(null)}>
+          <div className="modal-box submodal-box" onClick={e => e.stopPropagation()}>
+            <div className="modal-header">
+              <button type="button" className="modal-back" onClick={() => setSubmenu(null)}>← 返回</button>
+              <span>{submenu.icon} {submenu.title}</span>
+              <button className="modal-close" onClick={closeAllModals}>✕</button>
+            </div>
+            <div className="links-list">
+              {submenu.children.map((item, i) => (
+                <a key={i} href={item.url} target="_blank" rel="noreferrer"
+                  className={`link-btn ${item.className ?? 'btn-slate'}`}>
+                  <div className="link-icon">{item.icon ?? '🔗'}</div>
+                  <div className="link-text">{item.title}</div>
                 </a>
               ))}
             </div>
