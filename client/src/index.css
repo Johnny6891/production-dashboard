@@ -1,5 +1,9 @@
 * { box-sizing: border-box; margin: 0; padding: 0; outline: none; }
 
+:root {
+  --content-width: min(1200px, 95vw);
+}
+
 body {
   font-family: 'Noto Sans TC', sans-serif;
   background-color: #beb3aa;
@@ -30,9 +34,22 @@ body {
   box-shadow: 0 4px 20px rgba(0,0,0,0.1); gap: 5px;
 }
 .nav-greeting { font-size: 2.2rem; font-weight: 700; color: #3d332e; margin-bottom: 2px; margin-top: 10px; }
+.nav-links-btn {
+  position: absolute; right: calc(100% + 12px); top: 50%; transform: translateY(-50%);
+  background: rgba(140,123,117,0.45); color: #3d332e;
+  border: 1px solid rgba(255,255,255,0.35); border-radius: 14px;
+  padding: 16px 32px; font-size: 1.9rem; font-weight: 700;
+  cursor: pointer; white-space: nowrap; font-family: inherit;
+  transition: background 0.2s;
+}
+.nav-links-btn:hover { background: rgba(109,95,90,0.65); color: white; }
 .nav-info { font-size: 1.4rem; font-weight: 500; color: #5c524d; margin-bottom: 8px; }
+.nav-todos-wrapper {
+  width: var(--content-width);
+  position: relative;
+}
 .nav-todos-display {
-  width: 95%; max-width: 1200px; text-align: left;
+  width: 100%; text-align: left;
   font-size: 1.1rem; color: #8c5e26; font-weight: 700; min-height: 50px;
   background: rgba(255,255,255,0.5); border-radius: 15px; padding: 12px 25px;
   display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
@@ -41,7 +58,7 @@ body {
 .nav-todo-line { width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 /* ── 寬度控制 ── */
-.section-width { width: 95%; max-width: 1200px; padding: 0 10px; z-index: 1; margin-bottom: 20px; }
+.section-width { width: var(--content-width); z-index: 1; margin-bottom: 20px; }
 
 /* ── 玻璃面板 ── */
 .glass-panel {
@@ -90,19 +107,45 @@ body {
 .todo-item.done .todo-text { text-decoration: line-through; opacity: 0.5; }
 .todo-item.done { background: rgba(255,255,255,0.15); }
 
+/* ── 彈窗 ── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,0.35); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-box {
+  background: rgba(235,227,220,0.97); backdrop-filter: blur(12px);
+  border-radius: 20px; border: 1px solid rgba(255,255,255,0.4);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+  padding: 25px; width: 90%; max-width: 460px;
+}
+.modal-header {
+  font-size: 1.2rem; font-weight: 700; color: #5c4044;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 2px solid rgba(255,255,255,0.3);
+  padding-bottom: 10px; margin-bottom: 20px;
+}
+.modal-close {
+  background: none; border: none; font-size: 1.1rem; color: #5c4044;
+  cursor: pointer; padding: 4px 8px; border-radius: 6px;
+  font-family: inherit; transition: background 0.2s;
+}
+.modal-close:hover { background: rgba(0,0,0,0.1); }
+
 /* ── 連結 ── */
-.links-grid { display: flex; flex-direction: row; gap: 20px; justify-content: space-between; flex-wrap: wrap; }
+.links-list { display: flex; flex-direction: column; gap: 12px; }
 .link-btn {
-  flex: 1; min-width: 250px; text-decoration: none;
-  display: flex; align-items: center; justify-content: center; gap: 15px;
-  padding: 25px 20px; border-radius: 15px;
+  width: 100%; text-decoration: none;
+  display: flex; align-items: center; gap: 15px;
+  padding: 18px 20px; border-radius: 15px;
   border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(5px);
   transition: all 0.3s ease;
 }
-.link-btn:hover { transform: translateY(-5px); background: rgba(255,255,255,0.6); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+.link-btn:hover { transform: translateY(-3px); background: rgba(255,255,255,0.6); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
 .btn-warm { background: rgba(216,203,190,0.4); }
 .btn-sage { background: rgba(178,187,174,0.4); }
 .btn-dusty { background: rgba(190,174,176,0.4); }
+.btn-slate { background: rgba(174,183,190,0.4); }
 .link-icon { font-size: 1.8rem; }
 .link-text { font-size: 1.1rem; font-weight: 700; color: #4a4a4a; }
 

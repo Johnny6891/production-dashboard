@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { getDashboard, getConfig, getTodos } from './api';
 import Navbar from './components/Navbar';
 import DataCard from './components/DataCard';
-import LinksGrid from './components/LinksGrid';
 import TodoList from './components/TodoList';
 
 export default function App() {
@@ -18,7 +17,7 @@ export default function App() {
 
   return (
     <>
-      <Navbar todos={todos} />
+      <Navbar todos={todos} links={config?.links ?? []} />
 
       <div className="circle circle-1" />
       <div className="circle circle-2" />
@@ -40,16 +39,6 @@ export default function App() {
           fieldIcons={config?.fieldIcons ?? {}}
           side="right"
         />
-      </div>
-
-      {/* 常用系統導航 */}
-      <div className="section-width">
-        <div className="glass-panel">
-          <div className="panel-header">
-            <span>🔗 常用系統導航</span>
-          </div>
-          <LinksGrid links={config?.links ?? []} />
-        </div>
       </div>
 
       {/* 待辦事項備忘 */}

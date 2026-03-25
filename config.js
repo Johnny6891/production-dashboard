@@ -28,7 +28,8 @@ const CONFIG = {
   LINKS: [
     { title: '生管常用頁面', url: 'https://gamma.app/docs/-vutkue9x5spnt6e?mode=doc', icon: '📊', className: 'btn-warm' },
     { title: '1F-訂單排程系統', url: 'https://script.google.com/macros/s/AKfycbxl8eblvm3_6eHSqZh9PgmGiEGQ_pi-afT29kkxfVERXnROYbcts1C5NKNSlix1diUB/exec', icon: '🏭', className: 'btn-sage' },
-    { title: '2F-訂單排程系統', url: 'https://script.google.com/macros/s/AKfycbztGiR_IdZn5oYjhbaZ0FT5L1aXek7rOSCRcN-LzhFruhgxbq7li_OZaU_tt-m7RIZ4UA/exec', icon: '🏗️', className: 'btn-dusty' }
+    { title: '2F-訂單排程系統', url: 'https://script.google.com/macros/s/AKfycbztGiR_IdZn5oYjhbaZ0FT5L1aXek7rOSCRcN-LzhFruhgxbq7li_OZaU_tt-m7RIZ4UA/exec', icon: '🏗️', className: 'btn-dusty' },
+    { title: '同事需求管理系統', url: 'https://colleague-request-system.vercel.app/', icon: '👥', className: 'btn-slate' }
   ],
 
   FIELD_ICONS: {
