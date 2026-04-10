@@ -13,6 +13,19 @@ export default function App() {
     getConfig().then(setConfig);
     getDashboard().then(setDashboard);
     getTodos().then(setTodos);
+
+    const dashboardTimer = setInterval(() => {
+      getDashboard().then(setDashboard);
+    }, 5 * 60 * 1000); // 每 5 分鐘
+
+    const todosTimer = setInterval(() => {
+      getTodos().then(setTodos);
+    }, 2 * 60 * 1000); // 每 2 分鐘
+
+    return () => {
+      clearInterval(dashboardTimer);
+      clearInterval(todosTimer);
+    };
   }, []);
 
   return (
